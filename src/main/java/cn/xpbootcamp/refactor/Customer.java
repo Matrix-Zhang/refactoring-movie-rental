@@ -26,33 +26,33 @@ public class Customer {
         Enumeration<Rental> rentals = this.rentals.elements();
         StringBuilder result = new StringBuilder("Rental Record for " + getName() + "：\n");
         while (rentals.hasMoreElements()) {
-            Rental each = rentals.nextElement();
+            Rental eachRental = rentals.nextElement();
             //show figures for this rental
             //determine amounts for each line
             double thisAmount = 0d;
-            switch (each.getMovie().getPriceCode()) {
+            switch (eachRental.getMovie().getPriceCode()) {
                 case Movie.HISTORY:
                     thisAmount += 2;
-                    if (each.getDaysRented() > 2)
-                        thisAmount += (each.getDaysRented() - 2) * 1.5;
+                    if (eachRental.getDaysRented() > 2)
+                        thisAmount += (eachRental.getDaysRented() - 2) * 1.5;
                     break;
                 case Movie.NEW_RELEASE:
-                    thisAmount += each.getDaysRented() * 3;
+                    thisAmount += eachRental.getDaysRented() * 3;
                     break;
                 case Movie.CAMPUS:
                     thisAmount += 1.5;
-                    if (each.getDaysRented() > 3)
-                        thisAmount += (each.getDaysRented() - 3) * 1.5;
+                    if (eachRental.getDaysRented() > 3)
+                        thisAmount += (eachRental.getDaysRented() - 3) * 1.5;
                     break;
             }
             //add frequent renter points
             frequentRenterPoints++;
-            if ((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) && each.getDaysRented() > 1)
+            if ((eachRental.getMovie().getPriceCode() == Movie.NEW_RELEASE) && eachRental.getDaysRented() > 1)
                 frequentRenterPoints++;
 
             //show figures for this rental
             result.append("\t")
-                  .append(each.getMovie().getTitle())
+                  .append(eachRental.getMovie().getTitle())
                   .append("\t")
                   .append(thisAmount).append("\n");
             totalAmount += thisAmount;
