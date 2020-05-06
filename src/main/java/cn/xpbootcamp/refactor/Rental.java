@@ -2,8 +2,8 @@ package cn.xpbootcamp.refactor;
 
 public class Rental {
 
-    private Movie movie;
-    private int daysRented;
+    private final Movie movie;
+    private final int daysRented;
 
     Rental(Movie movie, int daysRented) {
         this.movie = movie;

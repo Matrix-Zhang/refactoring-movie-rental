@@ -5,8 +5,8 @@ import java.util.Vector;
 
 public class Customer {
 
-    private String name;
-    private Vector<Rental> rentals = new Vector<>();
+    private final String name;
+    private final Vector<Rental> rentals = new Vector<>();
 
     Customer(String name) {
         this.name = name;
